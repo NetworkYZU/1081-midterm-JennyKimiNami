@@ -43,12 +43,13 @@ public class AddOrderServlet extends HttpServlet {
         */
         String t = request.getParameter("food");
         HttpSession session = request.getSession();
-        ArrayList foodlist = (ArrayList)session.getAttribute("food");
+        ArrayList foodlist = (ArrayList)session.getAttribute("value");
         if (foodlist==null) {
             foodlist = new ArrayList();
             session.setAttribute("food", foodlist);            
         }
         foodlist.add(t);
+        
         response.sendRedirect("list.jsp");
     }
 

@@ -4,6 +4,7 @@
     Author     : lendle
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,10 @@
         將 session 無效化，使其內容完全被清掉
         -->
         <%
-           session.invalidate();
+           ArrayList list = (ArrayList)session.getAttribute("foodlist");
+           if (list!=null) {
+                   list.clear();
+               }
         %>
         訂單已收到！<a href="index.html">回首頁</a>
        
