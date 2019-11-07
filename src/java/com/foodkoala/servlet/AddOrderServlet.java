@@ -38,10 +38,18 @@ public class AddOrderServlet extends HttpServlet {
         question 5 (30%)
         取得 session 物件，接收 user 傳來的 food 參數，
         將參數儲存到 session 物件裏面（你會需要將其儲存到一個 ArrayList 裏面，因爲會有多個 food）
-        
         question 6 (10%)
         最後外轉址到 list.jsp
         */
+        String t = request.getParameter("food");
+        HttpSession session = request.getSession();
+        ArrayList foodlist = (ArrayList)session.getAttribute("food");
+        if (foodlist==null) {
+            foodlist = new ArrayList();
+            session.setAttribute("food", foodlist);            
+        }
+        foodlist.add(t);
+        response.sendRedirect("list.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
